@@ -1,0 +1,21 @@
+{% extends "cost/menu.html" %}
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>Ingredient</th>
+            <th>Unit</th>
+            <th> used in recipe</th>
+        </tr>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.unit }}</td>
+                <td>{% for i in ingredient.recipes %}
+                        {{ i.name }}
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

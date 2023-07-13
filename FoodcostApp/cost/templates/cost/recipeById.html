@@ -1,0 +1,45 @@
+{%extends "cost/menu.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h1>Recept</h1>
+
+        <h2> {{ recipe.name }} </h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>end Price</th>
+                    <th>end Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingredient in ingredients %}
+                    <tr>
+                        <td>{{ ingredient.ingredient }}</td>
+                        <td>{{ ingredient.quantity }}</td>
+                        <td>{{ ingredient.ingredient.price }}</td>
+                        <td>{{ ingredient.ingredient.totalPrice }}</td>
+                        
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>{{ recipe.totalPrice }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button><a href="{% url 'recipes' %}">Back</a></button>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "cost/menu.html" %}
+{% block content %}
+<div class="container">
+<h1>Recipes</h1>
+
+    {%if recipes %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Portions</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for recipe in recipes %}
+            {% comment %} a table containing all recipes and bootstrap buttons to edit and delete {% endcomment %}
+            
+                <tr>
+                    <td>{{recipe.name}}</td>
+                    <td>{{recipe.description}}</td>
+                    <td>{{recipe.category}}</td>
+                    <td>{{recipe.portions}}</td>
+                    <td><a href="recipes/{{recipe.id}}/edit" class="btn btn-primary">Edit</a></td>
+                    <td><a href="cost/recipes/{{recipe.id}}/delete" class="btn btn-danger">Delete</a></td>
+                    <td><a href="recipes/{{recipe.id}}" class="btn btn-success">Detail</a></td>
+
+                </tr>
+    
+            {% endfor %}
+            </table>
+    {% else %}
+        <p>No recipes are available.</p>
+    {% endif %}
+</div>
+{% endblock %}
