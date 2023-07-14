@@ -1,0 +1,8 @@
+{% comment %} crud page to edit ingredient name and prices {% endcomment %}
+{% block content %}
+    <h1>Edit Ingredient</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

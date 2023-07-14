@@ -1,0 +1,20 @@
+{% comment %} form to create a recipe and select multiple ingredients that belong to it {% endcomment %}
+
+{% block content %}
+    <h1>Create Recipe</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h2> add Ingredients</h2>
+        <ul id="ingredients">
+            {% for ingredient in ingredients %}
+                <li>
+                    <input type="checkbox" name="ingredients" value="{{ ingredient.name }}">
+                    <label>{{ ingredient.name }}</label>
+                    <input type="number" name="amount" value="1" min="1" max="1000">
+                </li>
+                
+            {% endfor %}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

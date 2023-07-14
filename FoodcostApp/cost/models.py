@@ -18,6 +18,8 @@ class ingredient(models.Model):
         return recipe.objects.filter(ingredients__id=self.id)
     def price(self):
         return ingredientPrice.objects.filter(ingredient=self).order_by('-date')[0].price
+    def priceHistory(self):
+        return ingredientPrice.objects.filter(ingredient=self).order_by('-date')
     def totalPrice(self):
         return ingredientPrice.objects.filter(ingredient=self).order_by('-date')[0].price * recipe_ingredient.objects.filter(ingredient=self).order_by('-recipe__portions')[0].quantity
 

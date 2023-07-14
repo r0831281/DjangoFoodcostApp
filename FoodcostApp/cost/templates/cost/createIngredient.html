@@ -1,0 +1,15 @@
+{% extends "cost/menu.html" %}
+{% comment %} html page with form to add ingredient {% endcomment %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>Add Ingredient</h1>
+    <form method="POST" action="{% url 'addIngredient' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+</div>
+{% endblock %}

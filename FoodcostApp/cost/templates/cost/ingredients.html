@@ -1,21 +1,35 @@
 {% extends "cost/menu.html" %}
+
+
 {% block content %}
-    <table class="table">
-        <tr>
-            <th>Ingredient</th>
-            <th>Unit</th>
-            <th> used in recipe</th>
-        </tr>
-        {% for ingredient in ingredients %}
+    <div class="container">
+        <h1>Ingredients</h1>
+        <a href="/cost/ingredients/add" class="btn btn-primary">Create</a>
+        <a href="cost/ingredients/units" class="btn btn-primary">Units</a>
+    </div>
+    <br>
+<div class="container">
+        <table class="table">
             <tr>
-                <td>{{ ingredient.name }}</td>
-                <td>{{ ingredient.unit }}</td>
-                <td>{% for i in ingredient.recipes %}
-                        {{ i.name }}
-                        <br>
-                    {% endfor %}
-                </td>
+                <th>Ingredient</th>
+                <th>Unit</th>
+                <th>used in recipe</th>
+                <th></th>
+                <th></th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{ ingredient.name }}</td>
+                    <td>{{ ingredient.unit }}</td>
+                    <td>{% for i in ingredient.recipes %}
+                            {{ i.name }}
+                            <br>
+                        {% endfor %}
+                    </td>
+                    <td><a href="ingredients/{{ ingredient.id }}/edit" class="btn btn-primary">Edit</a></td>
+                    <td><a href="/cost/ingredients/{{ ingredient.id }}/delete" class="btn btn-danger">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
